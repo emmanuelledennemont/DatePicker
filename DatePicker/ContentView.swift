@@ -1,24 +1,37 @@
-//
-//  ContentView.swift
-//  DatePicker
-//
-//  Created by Emmanuelle  Dennemont on 20/06/2024.
-//
-
 import SwiftUI
 
 struct ContentView: View {
+    @State private var selectedDate = Date()
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Sélectionnez une date :")
+                .font(.headline)
+                .padding()
+
+            DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .accentColor(.orange) // Changer la couleur de la date sélectionnée
+                .padding()
+
+            Text("Date sélectionnée : \(selectedDate, formatter: dateFormatter)")
+                .font(.headline)
+                .foregroundStyle(.orange) // Changer la couleur du texte de la date sélectionnée
+                .padding()
+
+            Spacer()
         }
         .padding()
     }
+
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
 }
 
 #Preview {
-    ContentView()
+ContentView()
 }
