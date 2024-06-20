@@ -22,6 +22,7 @@ struct ContentView: View {
             Spacer()
         }
         .padding()
+        .environment(\.locale, Locale(identifier: "fr_FR")) // Définir la langue française par défaut
     }
 
     private let dateFormatter: DateFormatter = {
