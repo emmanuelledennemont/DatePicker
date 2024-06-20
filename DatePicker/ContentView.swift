@@ -25,11 +25,13 @@ struct ContentView: View {
                 originalDate = selectedDate
                 // Vous pouvez ajouter ici le code pour enregistrer la date dans votre modèle de données ou effectuer d'autres actions nécessaires
             }, isFilled: true)
-            
+            .padding(.bottom, 5) // Réduire le padding en bas du bouton
+
             CustomButton(title: "Annuler", action: {
                 // Annuler : réinitialiser la date à sa valeur d'origine
                 selectedDate = originalDate
             }, isFilled: false)
+            .padding(.top, 5) // Réduire le padding en haut du bouton
 
             Spacer()
         }
@@ -63,10 +65,8 @@ struct CustomButton: View {
                         .stroke(Color.orange, lineWidth: isFilled ? 0 : 2)
                 )
         }
-        .padding()
     }
 }
-
 
 #Preview {
     ContentView()
