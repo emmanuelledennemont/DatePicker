@@ -10,12 +10,12 @@ struct ContentView: View {
                 .font(.headline)
                 .padding()
 
-            DatePicker("Date", selection: $selectedDate, displayedComponents: .date)
+            DatePicker("Date et heure", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .accentColor(.orange) // Changer la couleur de la date sélectionnée
                 .padding()
 
-            Text("Date sélectionnée : \(selectedDate, formatter: dateFormatter)")
+            Text("Date et heure sélectionnées : \(selectedDate, formatter: dateFormatter)")
                 .font(.headline)
                 .foregroundColor(.orange) // Changer la couleur du texte de la date sélectionnée
                 .padding()
@@ -42,7 +42,7 @@ struct ContentView: View {
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.timeStyle = .none
+        formatter.timeStyle = .short // Inclure l'heure dans l'affichage du texte
         return formatter
     }()
 }
